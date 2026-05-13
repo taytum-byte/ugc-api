@@ -6,7 +6,7 @@ const router = express.Router();
 const ADMIN_KEY = process.env.ADMIN_KEY || 'drew2026admin';
 
 const adminAuth = (req, res, next) => {
-  const key = req.headers['x-admin-key'];
+  const key = req.headers['x-admin-key'] || req.query.key;
   if (key !== ADMIN_KEY) return res.status(401).json({ error: 'Unauthorized' });
   next();
 };
