@@ -31,6 +31,7 @@ app.use('/api/uploads', require('./routes/uploads'));
 app.use('/api/invoices', require('./routes/invoices'));
 app.use('/api/brand', require('./routes/brands'));
 app.use('/api/suggestions', require('./routes/suggestions'));
+app.use('/api/admin', require('./routes/admin'));
 
 app.get('/api/stats', auth, async (req, res) => {
   try {
