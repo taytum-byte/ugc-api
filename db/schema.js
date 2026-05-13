@@ -174,7 +174,17 @@ async function initDb() {
       created_at TIMESTAMPTZ DEFAULT NOW()
     )
   `);
-
+await pool.query(`
+  CREATE TABLE IF NOT EXISTS suggestions (
+    id TEXT PRIMARY KEY,
+    user_id TEXT NOT NULL,
+    category TEXT NOT NULL DEFAULT 'other',
+    title TEXT NOT NULL,
+    description TEXT NOT NULL,
+    status TEXT DEFAULT 'new',
+    created_at TIMESTAMPTZ DEFAULT NOW()
+  )
+`);
   console.log('✅ Database tables ready');
   return db;
 }
